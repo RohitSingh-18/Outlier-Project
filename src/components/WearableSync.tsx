@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
+import { useState } from 'react';
 
 const deviceTypes = [
   { id: 'smartwatch', name: 'Smartwatch' },
@@ -10,7 +10,7 @@ const deviceTypes = [
 
 const WearableSync = () => {
   const [selectedDevice, setSelectedDevice] = useState(deviceTypes[0].id);
-  const [isConnected, setIsConnected] = useState(false);
+  const [isConnected] = useState(false);
   const [isSyncing, setIsSyncing] = useState(false);
   const [lastSynced, setLastSynced] = useState(new Date());
 

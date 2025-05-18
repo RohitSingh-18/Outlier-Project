@@ -1,4 +1,4 @@
-import { Bars3Icon, BellIcon, CogIcon, UserCircleIcon } from '@heroicons/react/24/outline';
+import { BellIcon } from '@heroicons/react/24/outline';
 
 const navLinks = [
   { label: 'Dashboard', active: true },
