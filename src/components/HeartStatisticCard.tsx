@@ -1,3 +1,5 @@
+import heartBeatImage from '../assets/heart-beat-removebg-preview.png';
+
 const stats = [
   { label: 'Average', value: 98, unit: 'BPM', color: '#6c63ff' },
   { label: 'Minimum', value: 48, unit: 'BPM', color: '#2ec4b6' },
@@ -17,7 +19,7 @@ const HeartStatisticCard = () => {
             <path d="M400,50 L450,50 L460,30 L470,70 L480,50 L550,50 L560,30 L570,70 L580,50 L650,50 L660,30 L670,70 L680,50 L750,50 L760,30 L770,70 L780,50 L800,50" transform="translate(400, 0)" />
           </g>
         </svg>
-        <img src="/src/assets/heart-beat-removebg-preview.png" alt="Heart" className="pulsating-heart-img" />
+        <img src={heartBeatImage} alt="Heart" className="pulsating-heart-img" />
       </div>
 
       <div className="stats-row">
