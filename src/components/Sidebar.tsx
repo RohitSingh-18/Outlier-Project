@@ -25,7 +25,7 @@ const Sidebar = () => {
       onMouseLeave={() => setExpanded(false)}
     >
       <nav className="sidebar-menu-nav">
-        {navItems.map((item, idx) => (
+        {navItems.map((item) => (
           <a
             href="#"
             key={item.label}

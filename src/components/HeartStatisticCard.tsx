@@ -1,5 +1,3 @@
-import React from 'react';
-
 const stats = [
   { label: 'Average', value: 98, unit: 'BPM', color: '#6c63ff' },
   { label: 'Minimum', value: 48, unit: 'BPM', color: '#2ec4b6' },

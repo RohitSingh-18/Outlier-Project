@@ -2,7 +2,6 @@ import Layout from './components/Layout';
 import MetricsGrid from './components/MetricsGrid';
 import DashboardHero from './components/DashboardHero';
 import ScheduleCard from './components/ScheduleCard';
-import HeartStatsCard from './components/HeartStatsCard';
 import WearableSyncCard from './components/WearableSyncCard';
 import HeartStatisticCard from './components/HeartStatisticCard';
 
