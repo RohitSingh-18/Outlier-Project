@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ArrowPathIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/outline';
 import smartwatchImage from '../assets/black-smartwatch-displaying-heart-rate-data-fitness-tracker-technology_84443-34396.png';
 import fitnessBandImage from '../assets/fitness band.png';
@@ -15,8 +15,17 @@ const deviceTypes = [
 const WearableSyncCard = () => {
   const [selectedDevice, setSelectedDevice] = useState(deviceTypes[0].id);
   const [isConnected] = useState(true);
-  const [isSyncing, setIsSyncing] = useState(false);
+  const [isSyncing, setIsSyncing] = useState(true);
   const [lastSynced, setLastSynced] = useState(new Date());
+
+  useEffect(() => {
+    const syncTimer = setTimeout(() => {
+      setIsSyncing(false);
+      setLastSynced(new Date());
+    }, 2500);
+
+    return () => clearTimeout(syncTimer);
+  }, []);
 
   const handleSync = () => {
     setIsSyncing(true);

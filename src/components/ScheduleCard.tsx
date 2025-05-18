@@ -24,7 +24,7 @@ const appointments = [
 
 const ScheduleCard = () => (
   <div className="schedule-card">
-    <div className="schedule-card-title">My Schedule</div>
+    <div className="schedule-card-title">My Appointments</div>
     <ul className="schedule-list">
       {appointments.map((item, idx) => (
         <li className="schedule-item" key={idx}>

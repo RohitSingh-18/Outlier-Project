@@ -1,12 +1,46 @@
 import heartBeatImage from '../assets/heart-beat-removebg-preview.png';
+import { useState, useEffect } from 'react';
 
-const stats = [
-  { label: 'Average', value: 98, unit: 'BPM', color: '#6c63ff' },
-  { label: 'Minimum', value: 48, unit: 'BPM', color: '#2ec4b6' },
-  { label: 'Maximum', value: 118, unit: 'BPM', color: '#ff6b6b' },
+// Initial placeholder stats
+const placeholderStats: { label: string; value: number | string; unit: string; color: string }[] = [
+  { label: 'Average', value: '--', unit: 'BPM', color: '#6c63ff' },
+  { label: 'Minimum', value: '--', unit: 'BPM', color: '#2ec4b6' },
+  { label: 'Maximum', value: '--', unit: 'BPM', color: '#ff6b6b' },
 ];
 
 const HeartStatisticCard = () => {
+  const [randomStats, setRandomStats] = useState(placeholderStats);
+  const [isLoading, setIsLoading] = useState(true);
+  const [randomBarHeights, setRandomBarHeights] = useState<number[]>([]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      // Generate random stats
+      const generateRandomStats = () => {
+        const average = Math.floor(Math.random() * (120 - 60 + 1)) + 60; // Between 60 and 120
+        const min = Math.floor(Math.random() * (average - 40 + 1)) + 40; // Between 40 and average
+        const max = Math.floor(Math.random() * (180 - average + 1)) + average; // Between average and 180
+
+        return [
+          { label: 'Average', value: average, unit: 'BPM', color: '#6c63ff' },
+          { label: 'Minimum', value: min, unit: 'BPM', color: '#2ec4b6' },
+          { label: 'Maximum', value: max, unit: 'BPM', color: '#ff6b6b' },
+        ];
+      };
+
+      // Generate random bar heights
+      const generateRandomBarHeights = () => {
+        return Array.from({ length: 16 }).map(() => Math.random() * 40 + 10); // Random height between 10 and 50
+      };
+
+      setRandomStats(generateRandomStats());
+      setRandomBarHeights(generateRandomBarHeights());
+      setIsLoading(false);
+    }, 2000); // 2 second delay
+
+    return () => clearTimeout(timer); // Clean up the timer
+  }, []);
+
   return (
     <div className="heart-statistic-card">
       <div className="card-title">Your Heart Statistic</div>
@@ -30,13 +64,23 @@ const HeartStatisticCard = () => {
       </div>
 
       <div className="stats-row">
-        {stats.map((s) => (
-          <div className="stat-item" key={s.label}>
-            <span className="stat-dot" style={{ background: s.color }}></span>
-            <span className="stat-label">{s.label}</span>
-            <div className="stat-value">{s.value} <span className="stat-unit">{s.unit}</span></div>
-          </div>
-        ))}
+        {isLoading ? (
+          placeholderStats.map((s) => (
+            <div className="stat-item" key={s.label}>
+              <span className="stat-dot" style={{ background: s.color }}></span>
+              <span className="stat-label">{s.label}</span>
+              <div className="stat-value">{s.value} <span className="stat-unit">{s.unit}</span></div>
+            </div>
+          ))
+        ) : (
+          randomStats.map((s) => (
+            <div className="stat-item" key={s.label}>
+              <span className="stat-dot" style={{ background: s.color }}></span>
+              <span className="stat-label">{s.label}</span>
+              <div className="stat-value">{s.value} <span className="stat-unit">{s.unit}</span></div>
+            </div>
+          ))
+        )}
       </div>
 
       <div className="heart-rate-chart">
@@ -48,13 +92,24 @@ const HeartStatisticCard = () => {
         <svg width="100%" height="80" viewBox="0 0 250 80" preserveAspectRatio="none">
           <line x1="0" y1="75" x2="250" y2="75" stroke="#eee" strokeWidth="1" /> {/* X-axis */}
           {/* Vertical Bars - simplified representation */}
-          {[...Array(16)].map((_, i) => {
-            const x = i * (250 / 15) + (250 / 15) / 2;
-            const height = Math.random() * 30 + 20; // Random height between 20 and 50
-            const y = 75 - height;
-            const strokeColor = (i % 2 === 0) ? '#dadaf9' : '#a8a2ff';
-            return <line key={i} x1={x} y1={75} x2={x} y2={y} stroke={strokeColor} strokeWidth="4" strokeLinecap="round" />;
-          })}
+          {isLoading ? (
+            // Display placeholder bars when loading
+            Array.from({ length: 16 }).map((_, i) => {
+              const x = i * (250 / 15) + (250 / 15) / 2;
+              const height = 10; // Placeholder height
+              const y = 75 - height;
+              const strokeColor = (i % 2 === 0) ? '#dadaf9' : '#a8a2ff';
+              return <line key={i} x1={x} y1={75} x2={x} y2={y} stroke={strokeColor} strokeWidth="4" strokeLinecap="round" />;
+            })
+          ) : (
+            // Display random bars when not loading
+            randomBarHeights.map((height, i) => {
+              const x = i * (250 / 15) + (250 / 15) / 2;
+              const y = 75 - height;
+              const strokeColor = (i % 2 === 0) ? '#dadaf9' : '#a8a2ff';
+              return <line key={i} x1={x} y1={75} x2={x} y2={y} stroke={strokeColor} strokeWidth="4" strokeLinecap="round" />;
+            })
+          )}
           {/* Labels */}
           <text x="0" y="79" fontSize="8" fill="#888" dominantBaseline="hanging">40</text>
           <text x="0" y="59" fontSize="8" fill="#888" dominantBaseline="hanging">60</text>

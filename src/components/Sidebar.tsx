@@ -12,7 +12,6 @@ const navItems = [
   { label: 'Activity', icon: <ChartBarIcon /> },
   { label: 'Sleep', icon: <MoonIcon /> },
   { label: 'Heart Rate', icon: <HeartIcon /> },
-  { label: 'Settings', icon: <CogIcon /> },
 ];
 
 const Sidebar = () => {

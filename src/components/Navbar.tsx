@@ -4,8 +4,6 @@ const navLinks = [
   { label: 'Dashboard', active: true },
   { label: 'Reports' },
   { label: 'Calendar' },
-  { label: 'Chat' },
-  { label: 'Settings' },
 ];
 
 const Navbar = () => {
