@@ -1,8 +1,8 @@
-import {
+import { 
   HomeIcon,
   ChartBarIcon,
   MoonIcon,
-  HeartIcon,
+  HeartIcon, 
   CogIcon
 } from '@heroicons/react/24/outline';
 import { useState } from 'react';
@@ -35,7 +35,7 @@ const Sidebar = () => {
             {expanded && <span className="sidebar-menu-label">{item.label}</span>}
           </a>
         ))}
-      </nav>
+            </nav>
     </aside>
   );
 };

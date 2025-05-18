@@ -1,34 +1,35 @@
-import { HeartIcon, ArrowPathIcon, MoonIcon, FireIcon } from '@heroicons/react/24/outline';
+import React from 'react';
 import MetricCard from './MetricCard';
+import { HeartIcon, MoonIcon, FireIcon, BoltIcon } from '@heroicons/react/24/outline';
 
 const iconStyle = { width: 32, height: 32 };
 
 const MetricsGrid = () => {
   const metrics = [
     {
-      value: 72,
-      label: 'Heart Rate (bpm)',
-      icon: <HeartIcon style={iconStyle} />,
+      label: 'Muscle Recovery',
+      value: '85%',
+      icon: <FireIcon />,
     },
     {
-      value: 8432,
-      label: 'Steps Today',
-      icon: <ArrowPathIcon style={iconStyle} />,
+      label: 'Calories',
+      value: '2450',
+      icon: <HeartIcon />,
     },
     {
-      value: 7.5,
-      label: 'Sleep Duration (hrs)',
-      icon: <MoonIcon style={iconStyle} />,
+      label: 'Sleep',
+      value: '7.5 hrs',
+      icon: <MoonIcon />,
     },
     {
-      value: 2450,
-      label: 'Calories Burned',
-      icon: <FireIcon style={iconStyle} />,
+      label: 'Steps',
+      value: '8432',
+      icon: <BoltIcon />,
     },
   ];
 
   return (
-    <div className="metrics-grid">
+    <div className="metrics-grid-2x2">
       {metrics.map((metric, index) => (
         <MetricCard
           key={index}

@@ -8,37 +8,27 @@ import HeartStatisticCard from './components/HeartStatisticCard';
 function App() {
   return (
     <Layout>
-      <div style={{ display: 'grid', gridTemplateColumns: '3fr 1fr', gap: 32, alignItems: 'flex-start' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
-          <DashboardHero />
-          <MetricsGrid />
-           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 24 }}>
-            {/* Placeholder cards for the dashboard */}
-            <div className="card">
-              <h2 style={{ fontSize: 20, fontWeight: 600, color: '#222', marginBottom: 16 }}>Heart Rate</h2>
-              <div style={{ height: 180, background: '#f4f6fa', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                Chart coming soon
-              </div>
-            </div>
-            <div className="card">
-              <h2 style={{ fontSize: 20, fontWeight: 600, color: '#222', marginBottom: 16 }}>Activity</h2>
-              <div style={{ height: 180, background: '#f4f6fa', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                Chart coming soon
-              </div>
-            </div>
-            <div className="card">
-              <h2 style={{ fontSize: 20, fontWeight: 600, color: '#222', marginBottom: 16 }}>Sleep</h2>
-              <div style={{ height: 180, background: '#f4f6fa', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                Chart coming soon
-              </div>
-            </div>
-          </div>
-        </div>
-         <div style={{ display: 'flex', flexDirection: 'column', gap: 32, maxWidth: 400 }}>
-          <HeartStatisticCard />
-          <WearableSyncCard />
-          <ScheduleCard />
-        </div>
+      {/* Heading and subheading below navbar */}
+      <DashboardHero style={{ marginBottom: 32 }}/>
+
+      {/* Top section: 2x2 grid, Wearable Sync, and Heart Stats in a single row */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 24, marginBottom: 32, alignItems: 'stretch' }}> {/* Changed alignItems to stretch */}
+        {/* Left column: 2x2 Metrics Grid */}
+        <MetricsGrid />
+
+        {/* Middle column: Wearable Sync Card */}
+        <WearableSyncCard />
+
+        {/* Right column: Heart Statistic Card */}
+        <HeartStatisticCard />
+      </div>
+
+      {/* Rest of the dashboard items below (original placeholder cards and ScheduleCard) */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+        
+         {/* ScheduleCard was in the right column, moving it below the new 3-column grid */}
+        <ScheduleCard /> 
+
       </div>
     </Layout>
   );

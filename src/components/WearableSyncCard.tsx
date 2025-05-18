@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import { ArrowPathIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/outline';
+import smartwatchImage from '../assets/black-smartwatch-displaying-heart-rate-data-fitness-tracker-technology_84443-34396.png';
+import fitnessBandImage from '../assets/fitness band.png';
+import heartMonitorImage from '../assets/heart monitor.png';
+import smartRingImage from '../assets/smart ring.png';
 
 const deviceTypes = [
   { id: 'smartwatch', name: 'Smartwatch' },
@@ -22,11 +26,31 @@ const WearableSyncCard = () => {
     }, 1500);
   };
 
+  const deviceImages: { [key: string]: string } = {
+    'smartwatch': smartwatchImage,
+    'fitness-band': fitnessBandImage,
+    'heart-monitor': heartMonitorImage,
+    'smart-ring': smartRingImage,
+  };
+
   return (
     <div className="wearable-sync-card">
       <div className="wearable-sync-header">
         <span className={`wearable-sync-status ${isConnected ? 'connected' : 'disconnected'}`}>{isConnected ? <CheckCircleIcon /> : <XCircleIcon />}</span>
-        <span className="wearable-sync-title">Wearable Sync</span>
+        <div className="card-title">
+          <h2>Wearable Sync</h2>
+        </div>
+      </div>
+      <div className="smartwatch-container">
+        <div className="pulsating-circles-container">
+          <div className="pulsating-circle inner-circle"></div>
+          <div className="pulsating-circle outer-circle"></div>
+        </div>
+        <img
+          src={deviceImages[selectedDevice]}
+          alt="Wearable Device"
+          className="smartwatch-image"
+        />
       </div>
       <div className="wearable-sync-body">
         <label className="wearable-sync-label">Device Type</label>

@@ -11,15 +11,22 @@ const HeartStatisticCard = () => {
     <div className="heart-statistic-card">
       <div className="card-title">Your Heart Statistic</div>
       
-      <div className="heart-image-container">
-        <svg className="pulsating-line" viewBox="0 0 400 100" preserveAspectRatio="none">
-          <g className="line-group">
-            {/* Duplicate the path to ensure seamless looping */}
-            <path d="M0,50 L50,50 L60,30 L70,70 L80,50 L150,50 L160,30 L170,70 L180,50 L250,50 L260,30 L270,70 L280,50 L350,50 L360,30 L370,70 L380,50 L400,50" />
-            <path d="M400,50 L450,50 L460,30 L470,70 L480,50 L550,50 L560,30 L570,70 L580,50 L650,50 L660,30 L670,70 L680,50 L750,50 L760,30 L770,70 L780,50 L800,50" transform="translate(400, 0)" />
-          </g>
-        </svg>
-        <img src={heartBeatImage} alt="Heart" className="pulsating-heart-img" />
+      {/* Container for swipe buttons and heart/line */}
+      <div style={{ position: 'relative' }}>
+        {/* Placeholder Swipe Buttons */}
+        <button style={{ position: 'absolute', top: '50%', left: '10px', transform: 'translateY(-50%)', zIndex: 10, background: 'rgba(255,255,255,0.5)', border: 'none', borderRadius: '50%', width: '30px', height: '30px', cursor: 'pointer' }}>&lt;</button>
+        <button style={{ position: 'absolute', top: '50%', right: '10px', transform: 'translateY(-50%)', zIndex: 10, background: 'rgba(255,255,255,0.5)', border: 'none', borderRadius: '50%', width: '30px', height: '30px', cursor: 'pointer' }}>&gt;</button>
+
+        <div className="heart-image-container">
+          <svg className="pulsating-line" viewBox="0 0 400 100" preserveAspectRatio="none">
+            <g className="line-group">
+              {/* Duplicate the path to ensure seamless looping */}
+              <path d="M0,50 L50,50 L60,30 L70,70 L80,50 L150,50 L160,30 L170,70 L180,50 L250,50 L260,30 L270,70 L280,50 L350,50 L360,30 L370,70 L380,50 L400,50" />
+              <path d="M400,50 L450,50 L460,30 L470,70 L480,50 L550,50 L560,30 L570,70 L580,50 L650,50 L660,30 L670,70 L680,50 L750,50 L760,30 L770,70 L780,50 L800,50" transform="translate(400, 0)" />
+            </g>
+          </svg>
+          <img src={heartBeatImage} alt="Heart" className="pulsating-heart-img" />
+        </div>
       </div>
 
       <div className="stats-row">

@@ -1,13 +1,15 @@
-const DashboardHero = () => {
+import React from 'react';
+
+interface DashboardHeroProps {
+  style?: React.CSSProperties;
+}
+
+const DashboardHero = ({ style }: DashboardHeroProps) => {
   return (
-    <section className="dashboard-hero">
-      <div className="dashboard-hero-img">
-        {/* Replace with a real SVG or image if you have one */}
-        <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/heart-2026616_1280.png" alt="Heart" />
-      </div>
+    <section className="dashboard-hero" style={style}>
       <div className="dashboard-hero-text">
-        <h1>Overview<br />Conditions</h1>
-        <p className="dashboard-hero-sub">Monitor your heart and health stats in real time.</p>
+        <h1>Overview Of Your Health</h1>
+        <p className="dashboard-hero-sub">Harmonious Living: Balance, Strength, Vitality, Wellness.</p>
       </div>
     </section>
   );

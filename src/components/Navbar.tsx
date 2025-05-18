@@ -26,12 +26,12 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
-        </div>
-      </div>
+            </div>
+          </div>
       <div className="navbar-right">
         <button className="navbar-icon-btn">
           <BellIcon style={{ width: 22, height: 22 }} />
-        </button>
+            </button>
         <div className="navbar-avatar">
           <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" />
         </div>
