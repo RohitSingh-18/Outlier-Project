@@ -1,4 +1,5 @@
-import { HeartIcon, MoonIcon, FireIcon } from '@heroicons/react/24/outline';
+// import { motion } from 'framer-motion'; // Remove this line if motion is not used
+// import { HeartIcon, FootstepsIcon, MoonIcon, FireIcon } from '@heroicons/react/24/outline'; // Remove this line if none of these specific icons are used directly in MetricCard.tsx
 
 interface MetricCardProps {
   value: number | string;

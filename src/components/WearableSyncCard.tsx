@@ -10,7 +10,7 @@ const deviceTypes = [
 
 const WearableSyncCard = () => {
   const [selectedDevice, setSelectedDevice] = useState(deviceTypes[0].id);
-  const [isConnected, setIsConnected] = useState(true);
+  const [isConnected] = useState(true);
   const [isSyncing, setIsSyncing] = useState(false);
   const [lastSynced, setLastSynced] = useState(new Date());
 
