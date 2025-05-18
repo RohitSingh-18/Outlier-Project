@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import MetricCard from './MetricCard';
 import { HeartIcon, MoonIcon, FireIcon, BoltIcon } from '@heroicons/react/24/outline';
 
